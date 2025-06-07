@@ -1,0 +1,58 @@
+def decimal_binary(): 
+    try: 
+        # A decimal to binary code for only integers
+        num = int(input("Enter a (Decimal) number: ").strip())
+        binary_digits = []
+        is_running = True
+        if num == 0:
+            binary_digits.append(0)
+        while is_running:
+        # the while loop only runs while the user
+                if num >0:
+                    reminder = num%2
+                    binary_digits.append(reminder)
+                    num = num // 2
+                else:
+                    is_running = False
+        #the modulous of the first reminder is added to the binary_digits then a new whole integer is assigned untill the loops stops 
+        binary_digits = binary_digits[::-1]
+        # this reverses the binary_digits
+        for digits in binary_digits:
+            print(digits, end="")
+        # the for loop prints the list in a straight line
+    except ValueError:
+         print("You must input a integer")
+
+#Binnary to decimal
+def binary_decimal():
+        try:
+            number = input("Enter a binary number(0 - 1): ").strip()
+            for num in number:
+                 if num not in("0" or "1") :
+                    raise ValueError
+            total = 0
+            variable = 0
+            reverse = number[::-1]
+            for k in reverse:
+                part = (int(k) * pow(2, variable))
+                variable += 1
+                total += part
+    # collects the binary the reverses it multiplies it by the repsective number
+            print(total)
+        except ValueError:
+            print("Select only 0's and 1's")
+def main():
+    print("""
+Chose an option
+1. Decimal to binary
+2. Binary to decimal
+""")
+    user_input = input("Enter 1 or 2 ")
+    if user_input == "1":
+          decimal_binary()
+    elif user_input == "2":
+         binary_decimal()
+    else:
+        print("Not an option")
+if __name__ == '__main__':
+     main()
